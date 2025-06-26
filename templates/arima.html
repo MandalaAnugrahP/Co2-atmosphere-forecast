@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CO2 Emission Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='arima.css') }}"
+    />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo">SARCo2</div>
+      <ul class="menu">
+        <li><a href="{{ url_for('home') }}">Dashboard</a></li>
+        <li><a href="#">Forecast</a></li>
+        <li><a href="{{ url_for('keluar') }}">Keluar</a></li>
+        <li><a href="{{ url_for('download_page') }}">Download Data</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <header class="main-header">
+        <h1>Selamat Datang di! SARCo2 Emission Forecasting</h1>
+        <p>Hasil Forecasting atmospheric CO2 levels</p>
+      </header>
+
+      <section class="forecast-section">
+        <div class="forecast-header">
+          <h2>ARIMA Seasonal CO2 Emission Forecast</h2>
+          <div class="model-dropdown">
+            <label for="model-select">Select Model:</label>
+            <select id="model-select">
+              <option value="ARIMA">ARIMA</option>
+              <option value="SARIMA">SARIMA</option>
+              <option value="LSTM">LSTM</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="forecast-container">
+          <div class="chart-container">
+            <h3>Time Series Forecast</h3>
+            {{ plot_html | safe }}
+          </div>
+
+          <div class="forecast-table">
+            <h3>Forecast Results</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Forecast PPM</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for date, ppm in future_predictions.items() %}
+                <tr>
+                  <td>{{ date }}</td>
+                  <td>{{ ppm }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="{{ url_for('static', filename='arima.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,247 @@
+/* Layout dasar */
+body {
+  display: flex;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/***** Sidebar ****/
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column; /* Konten sidebar ditata secara vertikal */
+  width: 250px;
+  background: #3a3f58;
+  color: #fff;
+  height: 100vh; /* Pastikan sidebar mengisi tinggi layar */
+  padding: 20px;
+  box-sizing: border-box;
+  position: sticky; /* Membuat sidebar tetap terlihat saat scroll */
+  top: 0; /* Menentukan posisi atas saat sticky */
+  overflow-y: auto; /* Bisa di-scroll jika isinya panjang */
+}
+
+.sidebar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sidebar .menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar .menu li {
+  margin: 10px 0;
+}
+
+.sidebar .menu a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.sidebar .menu a:hover {
+  background: #50597b;
+}
+
+/***** Konten ****/
+/* Konten utama */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f4f4f9;
+  height: 100vh; /* Pastikan konten utama mengisi tinggi layar */
+  overflow-y: auto; /* Membuat konten bisa di-scroll */
+  box-sizing: border-box;
+}
+
+.main-header {
+  margin-bottom: 20px;
+}
+
+.main-header h1 {
+  color: #34495e;
+}
+
+/* Kontainer untuk gambar dan elemen bertumpuk */
+.image-layer-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 15px;
+  height: 500px;
+}
+
+/* Layer 1: Gambar */
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Layer 2: Tulisan di dalam gambar */
+.text-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  width: 100%;
+  text-align: left;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.text-overlay h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.8em;
+}
+
+.text-overlay p {
+  margin: 0;
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+/* Layer 3: Grafik di dalam gambar */
+.chart-overlay {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+  width: 300px;
+}
+
+.chart-overlay h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.4em;
+  color: #34495e;
+}
+
+#chart-placeholder {
+  width: 100%;
+  height: 200px;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed #ccc;
+}
+
+.forecast-header {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.forecast-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #34495e;
+}
+
+.model-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.model-dropdown label {
+  font-size: 1rem;
+  color: #333;
+}
+
+.model-dropdown select {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Efek hover */
+.forecast-header:hover {
+  transform: translateY(-3px);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Styling untuk tabel hasil prediksi */
+.forecast-table {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+.forecast-table h3 {
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.forecast-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #f9f9f9;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.forecast-table th,
+.forecast-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.forecast-table th {
+  background: #3a3f58;
+  color: white;
+  font-weight: bold;
+}
+
+.forecast-table tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+.forecast-table tr:hover {
+  background: #ddd;
+}
+
+.forecast-table td {
+  color: #333;
+}
+
+@media screen and (max-width: 768px) {
+  .forecast-table table {
+    font-size: 0.9rem;
+  }
+
+  .forecast-table th,
+  .forecast-table td {
+    padding: 8px;
+  }
+}

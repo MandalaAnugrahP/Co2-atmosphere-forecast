@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emisi CO2 Dashboard Home</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='dashboard.css') }}"
+    />
+  </head>
+  <body>
+    <!-- Sidebar Navigasi -->
+    <div class="sidebar">
+      <div class="logo">SARCo2</div>
+      <ul class="menu">
+        <li><a href="#" class="active">Dashboard</a></li>
+        <li><a href="{{ url_for('forecast') }}">Forecast</a></li>
+        <li><a href="{{ url_for('keluar') }}">Keluar</a></li>
+        <li><a href="{{ url_for('download_page') }}">Download Data</a></li>
+      </ul>
+    </div>
+
+    <!-- Konten Utama -->
+    <div class="main-content">
+      <header class="main-header">
+        <h1>Selamat Datang! di SARCo2</h1>
+        <p>Peramalan Emisi CO2 Atmosfer Masa Mendatang.</p>
+      </header>
+
+      <!-- Container untuk Layer -->
+      <div class="image-layer-container">
+        <img
+          src="{{ url_for('static', filename='Image/Latar-belakang.jpg') }}"
+          alt="CO2 Emissions"
+          class="background-image"
+        />
+        <!-- Layer 2: Grafik -->
+        <div class="chart-overlay">
+          <h3>EMISI: GtCO2 VS TAHUN</h3>
+          <div id="chart-placeholder">{{ plot_html_gtco2 | safe }}</div>
+        </div>
+
+        <!-- Layer 3: Teks -->
+        <div class="text-overlay">
+          <h2>Emisi CO2 Global</h2>
+          <p>
+            Pada abad ke-19, para ilmuwan mulai menyadari bahwa gas-gas di
+            atmosfer, seperti karbon dioksida (CO2), belerang dioksida (SO2),
+            nitrogen monoksida (NO), nitrogen dioksida (NO2), gas metana (CH4),
+            dan klorofluorokarbon (CFC), menyebabkan fenomena yang dikenal
+            sebagai efek rumah kaca.
+          </p>
+          <p>
+            Efek rumah kaca adalah proses alami di mana atmosfer Bumi menahan
+            sebagian energi panas yang dipancarkan oleh permukaan Bumi. Gas-gas
+            tersebut berfungsi menyerap dan memancarkan kembali radiasi
+            inframerah, yang meningkatkan suhu di permukaan bumi.
+          </p>
+          <p>
+            Namun, peningkatan konsentrasi gas-gas rumah kaca akibat aktivitas
+            manusia telah menyebabkan pemanasan global yang lebih cepat dan
+            tidak terkendali. Peningkatan CO2 terutama disebabkan oleh
+            pembakaran bahan bakar fosil seperti minyak, batu bara, dan gas
+            alam, yang melepaskan gas CO2 dalam jumlah besar ke atmosfer.
+          </p>
+          <p>
+            Pada tahun 2024, emisi karbon global dari bahan bakar fosil mencapai
+            37,4 miliar ton, meningkat sebesar 0,8% dibandingkan tahun 2023.
+            Selain itu, emisi dari perubahan penggunaan lahan diperkirakan
+            mencapai 4,2 miliar ton. Dengan demikian, total emisi CO2 global
+            pada tahun 2024 diperkirakan mencapai 41,6 miliar ton.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
