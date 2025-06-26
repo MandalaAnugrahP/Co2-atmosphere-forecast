@@ -1,7 +1,0 @@
-flask
-numpy
-pandas
-matplotlib
-statsmodels
-scikit-learn
-ploty
